@@ -1,0 +1,15 @@
+requests = [98, 183, 37, 122, 14, 124, 65, 67]
+head = 53
+sequence = [head]
+seek_time = 0
+
+while requests:
+    dist = {r: abs(head-r) for r in requests}
+    closest = min(dist, key=dist.get)
+    seek_time += dist[closest]
+    head = closest
+    sequence.append(head)
+    requests.remove(closest)
+
+print("Seek Sequence:", sequence)
+print("Total Seek Time:", seek_time)
