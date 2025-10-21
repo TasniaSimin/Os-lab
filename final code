@@ -1,0 +1,21 @@
+def fifo_rep( pages, capacity):  #fifo page
+  memory=[]
+  faults=0
+
+  print("\npages\tMemory\t\tPage fault")
+  for p in pages:
+    if p not in memory:
+      faults+=1
+      if len(memory)<capacity:
+        memory.append(p)
+      else:
+        memory.pop(0)
+        memory.append(p)
+        print(f"{p}\t{memory}\tm")
+  else:
+          print(f"{p}\t{memory}\th")
+          print("\ntotal page fault:", faults)
+
+pages=list(map(int,input("enter the page refences string(space separated):").split()))
+capacity=int(input("enter num of the frame:"))
+fifo_rep(pages,capacity)
